@@ -1,6 +1,7 @@
 # General Jekyll Config
 highlighter: rouge
-url: /online-slides
+url: williamsamtaylor.co.uk
+baseurl: '/online-slides'
 lsi: false
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
 theme: jekyll-theme-minimal
