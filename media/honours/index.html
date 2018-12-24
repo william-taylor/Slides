@@ -1,0 +1,442 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/code.css">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+
+    <link rel="shortcut icon" href="img/icon.png" />
+    <link rel="icon" href="img/icon.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="honours presentation">
+    <meta name="author" content="william taylor">
+
+    <title>Honours Project</title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section data-background="img/intro.jpg">
+                    <h3>A JavaScript Runtime for Hardware Accelerated Applications</h3>
+                    <h5 class="fragment">By William Taylor</h5>
+                    <aside class='notes'>
+                        Introduce yourself and say you will state the format.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Structure</h2>
+                    <table style='color:white'>
+                        <tr>
+                            <th>Section</th>
+                            <th>Topics</th>
+                        </tr>
+                        <tr>
+                            <td>The Problem</td>
+                            <td>Identifying, Showcase</td>
+                        </tr>
+                        <tr>
+                            <td>The Idea</td>
+                            <td>Platform, Competitors</td>
+                        </tr>
+                        <tr>
+                            <td>Technical Review</td>
+                            <td>GPUs, JavaScript, V8</td>
+                        </tr>
+                        <tr>
+                            <td>The Design</td>
+                            <td>Features, Architecture</td>
+                        </tr>
+                        <tr>
+                            <td>The Results</td>
+                            <td>Today vs Future</td>
+                        </tr>
+                        <tr>
+                            <td>Demos</td>
+                            <td>2 Demos OpenCL + OpenGL</td>
+                        </tr>
+                        <tr>
+                            <td>Q&amp;A</td>
+                            <td>General Questions</td>
+                        </tr>
+                    </table>
+                    <aside class='notes'>
+                        Do this one quickly...
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background="img/generic-gpu.jpg">
+                    <h2>The Problem</h2>
+                    <aside class='notes'>
+                        Go over setting up a helloworld project and show how bad it is.
+                    </aside>
+                </section>
+                <section>
+                    <h6>HelloWorld Triangle on Win32</h6>
+                    <ul>
+                        <li class="fragment">Install C++ IDE</li>
+                        <li class="fragment">Install GLEW</li>
+                        <li class="fragment">Install GLFW or use Win32</li>
+                        <li class="fragment">Include libs in project</li>
+                        <li class="fragment">Link to libs in project</li>
+                        <li class="fragment">Learn the libraries</li>
+                        <li class="fragment">Write Window &amp; Context code</li>
+                        <li class="fragment">Write HelloWorld Triangle</li>
+                    </ul>
+                    <aside class='notes'>
+                        Specify what the libs are! and say how this was how you learned.
+                    </aside>
+                </section>
+                <section>
+                    <h1>Learning Curve</h1>
+                    <p>
+                        By many measures programming GPUs is still a specialist area for most people. Writing your first HelloWorld program requires in depth knowledge of half a dozen technologies.
+                    </p>
+                    <aside class='notes'>
+                        GPUs are a specialist area.
+                        It shouldnt be they are so regular now.
+                        CPU HelloWorld can be one line.
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background="img/gpu-fan.jpg">
+                    <h2>The Idea</h2>
+                </section>
+                <section>
+                    <h2>Idea 1/2</h2>
+                    <p>
+                        So, my honours project try’s to address this issue with an integrated platform to make GPUs more accessible. Instead of lengthy installs and the use of various different libraries the platform would provide an all in one tool to work with the GPU.                   
+                    </p>
+                    <aside class='notes'>
+                        Explain how we built a platform that allows a user to write their GPU tutorial in JavaScript and immeditaly run it
+                    </aside>
+                </section>
+                <section>
+                    <h2>Idea 2/2</h2>
+                    <p>
+                        The platform was written in C++ and allows GPU programs to be written in a more flexible way. Rather than using an overbearing IDE you can write a JavaScript file in any text editor and then pass it to the platform and it would execute the code which would be your experiment.
+                    </p>
+                    <aside class='notes'>
+                        Speak about the implementation details. e.g. C++ application that compiles JS
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background="img/red-pc.jpg">
+                    <h2>Technical Review</h2>
+                </section>
+                <section>
+                    <h2>Technical Review 1/3</h2>
+                    <p>
+                        <small>
+                            The first section of the review was on GPUs.
+                        </small>
+                    </p>
+                    <ul>
+                        <li>Integrated vs Dedicated</li>
+                        <li>Intel, AMD, NVidia, ATI</li>
+                        <li>OpenGL, OpenCL</li>
+                        
+                    </ul>
+                    <aside class='notes'>
+                        Overview GPU Desktop environment.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Technical Review 2/3</h2>
+                    <p>
+                        <small>
+                            The second section of the review was on JavaScript.
+                        </small>
+                    </p>
+                    <ul>
+                        <li>ECMAScript 2015</li>
+                        <li>Typed Arrays</li>
+                        <li>Runtimes</li>
+                    </ul>
+                    <aside class='notes'>
+                        Go over JavaScript.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Technical Review 3/3</h2>
+                    <p>
+                        <small>
+                            The final review section was on V8.
+                        </small>
+                    </p>
+                    <ul>
+                        <li>Increased Speed</li>
+                        <li>ECMAScript 2015</li>
+                        <li>Usages</li>
+                    </ul>
+                    <aside class='notes'>
+                        Say how this has only been possible because of V8.
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background="img/titan.png">
+                    <h2>The Design</h2>
+                </section>
+                <section>
+                    <h2>The Design 1/2</h2>
+                    <p>
+                        <small>
+                            On the C++ side I built a standard executable which could then be accessed anywhere if it was added to the PATH environment variable on Windows. The job of the C++ end of the application was to provide all the features and redirect calls from JavaScript to what their equivalent would be in C++. To execute an application using the platform one would just pass the filename to the C++ application and it would run it.
+                        </small>
+                    </p>
+                    <span><strong><small>Poco, SDL2, V8, GLEW</small></strong></span>
+                    <aside class='notes'>
+                        Explain the C++ side
+                    </aside>
+                </section>
+                <section>
+                    <h2>The Design 2/2</h2>
+                    <p>
+                        <small>
+                            On the JavaScript side a collection of modules were made available to handle common tasks like the "display" module for dealing with windows. It would be the JavaScript side where the user would write their program, they would then pass it to the platform when they wanted it to be run. The modules available on the JavaScript side were:
+                        </small>
+                    </p>
+                    <span><strong><small>cl, gl, console, datetime, maths, display, fs, http, system</small></strong></span>
+                    <aside class='notes'>
+                        Explain the JavaScript side
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background="img/radeon.jpg">
+                    <h2>The Results</h2>
+                </section>
+                <section>
+                    <h2 class="fragment">Today</h2>
+                    <p class="fragment">
+                        <small>
+                            Let's write that HelloWorld Triangle mentioned earlier.
+                        </small>
+                    </p>
+                    <pre class="fragment">
+                        <code class="cpp">
+LONG WINAPI WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{ 
+    static PAINTSTRUCT ps;
+
+    switch(uMsg) {
+    case WM_PAINT:
+        glClear(GL_COLOR_BUFFER_BIT);
+        glBegin(GL_TRIANGLES);
+        glVertex2i(0,  1);
+        glVertex2i(-1, -1);
+        glVertex2i(1, -1);
+        glEnd();
+
+        BeginPaint(hWnd, &ps);
+        EndPaint(hWnd, &ps);
+        return 0;
+
+    case WM_SIZE:
+	glViewport(0, 0, LOWORD(lParam), HIWORD(lParam));
+	PostMessage(hWnd, WM_PAINT, 0, 0);
+	return 0;
+
+    case WM_CHAR:
+	switch (wParam) {
+	case 27:			
+	    PostQuitMessage(0);
+	    break;
+	}
+	return 0;
+
+    case WM_CLOSE:
+	PostQuitMessage(0);
+	return 0;
+    }
+
+    return DefWindowProc(hWnd, uMsg, wParam, lParam); 
+} 
+
+HWND CreateOpenGLWindow(char* title, int x, int y, int width, int height, BYTE type, DWORD flags)
+{
+    int         pf;
+    HDC         hDC;
+    HWND        hWnd;
+    WNDCLASS    wc;
+    PIXELFORMATDESCRIPTOR pfd;
+    static HINSTANCE hInstance = 0;
+
+    if (!hInstance) {
+	hInstance = GetModuleHandle(NULL);
+	wc.style         = CS_OWNDC;
+	wc.lpfnWndProc   = (WNDPROC)WindowProc;
+	wc.cbClsExtra    = 0;
+	wc.cbWndExtra    = 0;
+	wc.hInstance     = hInstance;
+	wc.hIcon         = LoadIcon(NULL, IDI_WINLOGO);
+	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+	wc.hbrBackground = NULL;
+	wc.lpszMenuName  = NULL;
+	wc.lpszClassName = "OpenGL";
+
+	if (!RegisterClass(&wc)) {
+	    MessageBox(NULL, "RegisterClass() failed:  "
+		       "Cannot register window class.", "Error", MB_OK);
+	    return NULL;
+	}
+    }
+
+    hWnd = CreateWindow("OpenGL", title, WS_OVERLAPPEDWINDOW |
+			WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
+			x, y, width, height, NULL, NULL, hInstance, NULL);
+
+    if (hWnd == NULL) {
+	MessageBox(NULL, "CreateWindow() failed:  Cannot create a window.",
+		   "Error", MB_OK);
+	return NULL;
+    }
+
+    hDC = GetDC(hWnd);
+
+    memset(&pfd, 0, sizeof(pfd));
+    pfd.nSize        = sizeof(pfd);
+    pfd.nVersion     = 1;
+    pfd.dwFlags      = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | flags;
+    pfd.iPixelType   = type;
+    pfd.cColorBits   = 32;
+
+    pf = ChoosePixelFormat(hDC, &pfd);
+    if (pf == 0) {
+	MessageBox(NULL, "ChoosePixelFormat() failed:  "
+		   "Cannot find a suitable pixel format.", "Error", MB_OK); 
+	return 0;
+    } 
+ 
+    if (SetPixelFormat(hDC, pf, &pfd) == FALSE) {
+	MessageBox(NULL, "SetPixelFormat() failed:  "
+		   "Cannot set format specified.", "Error", MB_OK);
+	return 0;
+    } 
+
+    DescribePixelFormat(hDC, pf, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
+
+    ReleaseDC(hDC, hWnd);
+
+    return hWnd;
+}    
+
+int APIENTRY WinMain(HINSTANCE hCurrentInst, HINSTANCE hPreviousInst, LPSTR lpszCmdLine, int nCmdShow)
+{
+    HDC hDC;				
+    HGLRC hRC;				
+    HWND  hWnd;				
+    MSG   msg;				
+
+    hWnd = CreateOpenGLWindow("minimal", 0, 0, 256, 256, PFD_TYPE_RGBA, 0);
+    if (hWnd == NULL)
+	exit(1);
+
+    hDC = GetDC(hWnd);
+    hRC = wglCreateContext(hDC);
+    wglMakeCurrent(hDC, hRC);
+
+    ShowWindow(hWnd, nCmdShow);
+
+    while(GetMessage(&msg, hWnd, 0, 0)) {
+	    TranslateMessage(&msg);
+	    DispatchMessage(&msg);
+    }
+
+    wglMakeCurrent(NULL, NULL);
+    ReleaseDC(hDC, hWnd);
+    wglDeleteContext(hRC);
+    DestroyWindow(hWnd);
+
+    return msg.wParam;
+}
+                        </code>
+                    </pre>
+                    <aside class='notes'>
+                        This should be very easy
+                    </aside>
+                </section>
+                <section>
+                    <h2 class="fragment">Future</h2>
+                    <p class="fragment">
+                        <small>
+                            How you can write it now.
+                        </small>
+                    </p>
+                    <pre class="fragment">
+                        <code class="cpp">
+const { openWindow } = require('display');
+const gl = require('gl');
+
+openWindow({ w: 800, h: 500 }, screen => {
+    screen.show();
+    screen.enableOpenGL();
+    screen.onFrame(() => {
+        gl.glClear(gl.GL_COLOR_BUFFER_BIT);
+        gl.glBegin(gl.GL_TRIANGLES);
+        gl.glVertex2f(-0.5, -0.5);
+        gl.glVertex2f(0.0, 0.5);
+        gl.glVertex2f(0.5, -0.5);
+        gl.glEnd();
+
+        screen.swapBuffers();
+    });
+});
+                        </code>
+                    </pre>
+                    <aside class='notes'>
+                        Notes to go here
+                    </aside>
+                </section>
+                 <section>
+                    <h2 class="fragment">Findings</h2>
+                    <p class="fragment">
+                        <small>
+                            So in summary this research found the following.
+                        </small>
+                    </p>
+                    <ul class="fragment">
+                        <li>GPUs are more prevalent in today's computers</li>
+                        <li>JavaScript is fast and general purpose</li>
+                        <li>A toolset makes GPGPU programming easier</li>
+                        <li>High level concepts can aid with GPU usage</li>
+                    </ul>
+                    <aside class='notes'>
+                        Drop the mic!
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background="img/geforce.png">
+                    <h2>Demonstrations</h2>
+                </section>
+                <section data-background-video="videos/opengl-demo.mp4">
+                    <h2>OpenGL Demo</h2>
+                    <aside class='notes'>
+                        Do very quickly
+                    </aside>
+                </section>
+                <section data-background="img/opencl.gif">
+                    <h2>OpenCL Demo</h2>
+                    <aside class='notes'>
+                        Do very quickly
+                    </aside>
+                </section>
+            </section>
+            <section data-background="img/motherboard.jpg">
+                <h2>Q&amp;A</h2>
+                <aside class='notes'>
+                    Nice one!
+                </aside>
+            </section>
+        </div>
+    </div>
+    <script src="js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script src='js/setup.js'></script>
+</body>
+</html>

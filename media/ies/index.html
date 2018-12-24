@@ -1,0 +1,326 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/css/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/css/theme/simple.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.5.0/styles/vs.min.css">
+
+  <link rel="shortcut icon" href="http://www.williamsamtaylor.co.uk/images/home/icon.png" />
+  <link rel="icon" href="http://www.williamsamtaylor.co.uk/images/home/icon.png" />
+  <title>C++ Talk</title>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>10 Things You Should Know About C++</h2>
+        <p class="fragment" data-autoslide="5000">An overview of some C++11/14 features with examples</p>
+        <blockquote class="fragment" data-autoslide="5000">
+          <small>C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do it blows your whole leg off. - Bjarne Stroupstrup</small>
+        </blockquote>
+      </section>
+      <section>
+        <h3>What's on the Menu?</h3>
+        <ul>
+          <li class="fragment" data-autoslide="5000">C++ Updates Schedule</li>
+          <li class="fragment" data-autoslide="5000">Smart Pointers</li>
+          <li class="fragment" data-autoslide="5000">Move Semantics</li>
+          <li class="fragment" data-autoslide="5000">Automatic Type Deduction</li>
+          <li class="fragment" data-autoslide="5000">Simple For Each</li>
+          <li class="fragment" data-autoslide="5000">Universal Initialiser</li>
+          <li class="fragment" data-autoslide-"5000">Asserts &amp; Casts</li>
+          <li class="fragment" data-autoslide="5000">Default &amp; Delete</li>
+          <li class="fragment" data-autoslide="5000">Nullptr Madness</li>
+          <li class="fragment" data-autoslide="5000">Metaprogramming</li>
+          <li class="fragment" data-autoslide="5000">Functional</li>
+          <li class="fragment" data-autoslide="5000">Relevant Links</li>
+        </ul>
+      </section>
+      <section>
+        <h2>C++ Roadmap</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Date</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>C++17</td>
+              <td>2017</td>
+              <td>Major</td>
+            </tr>
+            <tr>
+              <td>C++14</td>
+              <td>2014</td>
+              <td>Minor</td>
+            </tr>
+            <tr>
+              <td>C++11</td>
+              <td>2011</td>
+              <td>Major</td>
+            </tr>
+            <tr>
+              <td>C++03</td>
+              <td>2003</td>
+              <td>Minor</td>
+            </tr>
+            <tr>
+              <td>C++98</td>
+              <td>1998</td>
+              <td>Major</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h2>Smart Pointers</h2>
+        <pre>
+          <code class="cpp">
+void pointerOwnership()
+{
+  // Delete occurs when there are no references to the pointer
+  std::shared_ptr<int> sharedNumber(new int{52});
+
+  // Delete occurs when unique_ptr is destroyed
+  std::unique_ptr<int> number(new int{52});
+
+  // Raw pointer = non owner = no delete
+  needsValue(number.get());
+}
+            </code>
+          </pre>
+        </section>
+          <section>
+            <h2>Move Semantics</h2>
+            <pre>
+              <code class='cpp'>
+void moveSemantics()
+{
+  // Boring vector
+  std::vector<int> vec1{ 1, 2, 3, 4, 5 };
+
+  // Lets get a pointer to its good stuff
+  void * initialLocation = vec1.data();
+
+  // Lets get a new vector
+  std::vector<int> result = add(vec1, 5);
+
+  // True or false ?
+  bool samePlace = result.data() == initialLocation;
+}
+                </code>
+              </pre>
+            </section>
+              <section>
+                <h2>Automatic Type Deduction</h2>
+                <pre>
+                  <code class='cpp'>
+// Auto return value
+auto method()
+{
+  const auto * ptr = new int{52};
+  const auto&amp; ref = *ptr;
+
+  // Initializer list of ints
+  const auto numberList = {50};
+  // Regular int
+  const auto num {50};
+
+  // String literal
+  return "Hello "s;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Simple For Each</h2>
+                <pre>
+                  <code>
+int main(int argc, char * argv[])
+{
+    for (auto i{0}; i < 5; ++i)
+    {
+        cout << i << endl;
+    }
+
+    for(auto&amp; v : { 0, 1, 2, 3, 5 })
+    {
+        cout << v << endl;
+    }
+
+    return cin.get();
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Universal Initializer</h2>
+                <pre>
+                  <code class='cpp'>
+
+int main(int argc, char * argv[])
+{
+  map<int, int> m{{ 0, 5 }};
+  vector<int> v{0,1,2};
+  point p{0, 0};
+  word a{"Hi"};
+
+  double e{ doubleValue };
+  word* ptr{nullptr};
+  int d{ 52 };
+
+  return 0;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Asserts &amp; Casts</h2>
+                <pre>
+                  <code class='cpp'>
+struct Point { int x; int y; };
+
+int main(int argc, char * argv[])
+{
+    static_assert(std::is_class<Point>::value, "Optional Message");
+    static_assert(std::is_abstract<Point>::value, "Optional Message");
+
+    const auto numFromString = static_cast<int>("0");
+    const auto numFromFloat = static_cast<int>(50.0f);
+
+    return 0;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>What is the problem? </h2>
+                <pre>
+                  <code>
+class Point {
+    int x; int y;
+public:
+    Point(int a, int b){ x = a; y = b;}
+};
+
+class NumberWrapper {
+    int * ptr;
+public:
+    NumberWrapper(int num): ptr(new int{num}){}
+    ~NumberWrapper() { delete ptr; }
+};
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Default &amp; Delete functions</h2>
+                <pre>
+                  <code>
+class Point {
+    int x; int y;
+public:
+    Point(int a, int b){ x = a; y = b;}
+    Point() = default;
+};
+
+class NumberWrapper {
+    int * ptr;
+public:
+    NumberWrapper(int num): ptr(new int{num}){}
+    ~NumberWrapper() { delete ptr; }
+    NumberWrapper(const NumberWrapper&amp; w) = delete;
+};
+
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Nullptr Madness</h2>
+                <pre>
+                  <code>
+void f(int * ptr) { cout << "Pointer called" << endl; }
+
+void f(int a) { cout << "Int called" << endl; }
+
+int main()
+{
+  f(nullptr);
+  f(NULL);
+  return 0;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Metaprogramming</h2>
+                <pre>
+                  <code>
+template<int N>
+struct Squared {
+    static const int value = N * N;
+};
+
+int main()
+{
+    cout << Squared<10>::value << endl;
+    return 0;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Functional</h2>
+                <pre>
+                  <code>
+int main(int argc, char * argv[])
+{
+    auto lowToHigh {true};
+    cin >> lowToHigh;
+    vector<int> n {0, 1, 2, 3, 4, 5};
+    sort(n.begin(), n.end(), [&amp;](int a, int b) {
+        return lowToHigh ? a < b : b < a;
+    });
+
+    for(auto&amp; num : numbers)
+        cout << num << endl;
+
+    return 0;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <h2>Links</h2>
+                <br/>
+                <ul>
+                  <li><a href='https://www.youtube.com/watch?v=1OEu9C51K2A' target='_blank'>Bjarne Stroupstrup - Writing good C++</a></li>
+                  <li><a href='https://www.youtube.com/watch?v=xnqTKD8uD64' target='_blank'>Herb Sutter - Modern C++</li>
+                    <li><a href='http://en.cppreference.com/w/' target='_blank'>C++ Standards Reference</a></li>
+                  </ul>
+                  <br/>
+                  <blockquote>Thanks for your time!</blockquote>
+                </section>
+              </div>
+            </div>
+            <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+            <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+            <script>
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'slide',
+              dependencies: [
+                {
+                  src: "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js",
+                  async: true,
+                  callback: function() { hljs.initHighlightingOnLoad(); }
+                }
+              ]
+            });
+            </script>
+          </body>
+          </html>

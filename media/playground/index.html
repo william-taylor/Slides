@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/css/reveal.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/css/theme/black.css">
+        <link rel="stylesheet" href="code-styles.css">
+        <title>Playground</title>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                  <h2>Playground</h2>
+                  <p class="fragment" data-autoslide="5000">HTML Elements</p>
+                </section>
+                <section>
+                  <h1>Header 1</h1>
+                  <h2>Header 2</h2>
+                  <h3>Header 3</h3>
+                  <h4>Header 4</h4>
+                  <h5>Header 5</h5>
+                  <h6>Header 6</h6>
+                </section>
+                <section>
+                  <big>Big Text</big>
+                  <small>Big Small</small>
+                  <p>Paragraph</p>
+                  <blockquote>Blockquote</blockquote>
+                </section>
+                <section>
+                  <h2>Pretty Code</h2>
+                  <pre style='background: #3f3f3f;'>
+                    <code class="hljs" data-trim contenteditable>
+  function linkify( selector ) {
+    if( supports3DTransforms ) {
+      var nodes = document.querySelectorAll( selector );
+
+      for( var i = 0, len = nodes.length; i < len; i++ ) {
+        var node = nodes[i];
+
+        if( !node.className ) {
+          node.className += ' roll';
+        }
+      }
+    }
+  }
+                    </code>
+                  </pre>
+                </section>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/js/reveal.min.js"></script>
+        <script>
+          $(document).ready(function() {
+            Reveal.initialize({
+              dependencies: [
+      					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+      					//{ src: 'plugin/zoom-js/zoom.js', async: true },
+      				]
+            });
+          });
+        </script>
+    </body>
+</html>
