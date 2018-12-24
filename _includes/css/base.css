@@ -333,3 +333,23 @@
 	.add-bottom { margin-bottom: 20px !important; }
 
 
+.post-title {
+	text-transform: uppercase;
+}
+
+.open-button {
+	float: right;
+	background-color: #898c8ad9;
+	border: none;
+	color: white;
+	padding: 5px 20px;
+	text-align: center;
+	text-decoration: none !important;
+	display: inline-block;
+	font-size: 15px;
+	margin: 0px auto;
+	margin-bottom: 20px;
+  }
+  .open-button:visited {
+	  color: white !important;
+  }
