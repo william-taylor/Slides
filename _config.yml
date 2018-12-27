@@ -1,6 +1,6 @@
 # General Jekyll Config
 highlighter: rouge
-url: 'william-taylor.github.io'
+url: '/online-slides'
 lsi: false
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
 theme: jekyll-theme-minimal
