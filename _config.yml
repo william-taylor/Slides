@@ -1,6 +1,6 @@
 # General Jekyll Config
 highlighter: rouge
-url: '/'
+url: ''
 lsi: false
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
 theme: jekyll-theme-minimal
